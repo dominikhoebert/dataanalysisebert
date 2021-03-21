@@ -20,7 +20,7 @@ row_count = 0
 standard_col = dfs[0].columns.tolist()
 for n, df in enumerate(dfs):
     if len(df.columns) != 35:
-        print(xlsx_file_names[n] + "File does not contain all columns!")
+        print(xlsx_file_names[n] + " File does not contain all columns! Should be 35 is " + str(len(df.columns)))
     else:
         row_count += df.shape[0]
     df_cols = df.columns.tolist()
@@ -36,3 +36,8 @@ df = pd.concat(dfs)
 print(df.shape)
 df = df.rename(columns={'Wenn du bei Frage 4 "Sonstige" angekreuzt hast, gib an, was du dabei gemeint hast.':'Wenn du bei Frage 14 "Sonstige" angekreuzt hast, gib an, was du dabei gemeint hast.'})
 
+df = df.reset_index()
+print(df.columns)
+
+df.drop(["index", "Name", "E-Mail", "Schule", "Klasse"], axis=1).to_csv("Motivation im Onlineunterricht.csv")
+df.to_csv("motivation.csv")
