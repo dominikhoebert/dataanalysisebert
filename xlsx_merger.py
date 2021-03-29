@@ -40,4 +40,4 @@ df = df.reset_index()
 print(df.columns)
 
 df.drop(["index", "Name", "E-Mail", "Schule", "Klasse"], axis=1).to_csv("Motivation im Onlineunterricht.csv")
-df.drop(["index", "Name", "E-Mail", "Klasse"]).to_csv("motivation.csv")
+df.drop(["index", "Name", "E-Mail", "Klasse"], axis=1).to_csv("motivation.csv")
